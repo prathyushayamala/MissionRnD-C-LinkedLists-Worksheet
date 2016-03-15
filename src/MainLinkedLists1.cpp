@@ -24,11 +24,45 @@ Objectives of C-LinkedLists-1 Lesson:
 
 //Do not edit below Header Files
 #include <stdio.h>
+#include<stdlib.h>
 #include "FunctionHeadersLinkedLists1.h"
+struct node {
+	int digit1;
+	int digit2;
+	struct node *next;
+};
+
+struct node * createNode(int n1, int n2) {
+	struct node *newNode;
+		newNode= (struct node *)malloc(sizeof(struct node));
+	newNode->digit1 = n1;
+	newNode->digit2 = n2;
+	newNode->next = NULL;
+	return newNode;
+}
+
+void add(struct node **head, int p, int q){
+	struct node *temp = *head;
+	if (*head == NULL){
+		(*head) = createNode(p, q);
+		(*head)->next = NULL;
+	}
+	else{
+		while (temp->next != NULL){
+			temp = temp->next;
+		}
+		temp->next = createNode(p, q);
+		temp->next->next = NULL;
+	}
+}
 
 int main(){
-	int num = -4568;
-	struct node *head = numberToLinkedList(num);
+	int num = 0;
+	struct node *head = NULL;
+	add(&head, 1, 2);
+	add(&head, 5, 6);
+	add(&head, 3, 4);
+	num = convert_sll_2digit_to_int(head);
 	//Test 012SortSll
 
 	//Test numberToLinkedList

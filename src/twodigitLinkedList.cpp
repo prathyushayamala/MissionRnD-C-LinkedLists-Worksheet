@@ -20,7 +20,32 @@ struct node {
 	int digit2;
 	struct node *next;
 };
-
+int power(int num, int superscript){
+	if (superscript > 0){
+		while (superscript > 0){
+			num = num*num;
+			superscript--;
+		}
+	}
+	else{
+		if (superscript == 0){
+			num = 1;
+		}
+	}
+	return num;
+}
 int convert_sll_2digit_to_int(struct node *head){
-	return 0;
+	struct node *temp=head;
+	int number_of_nodes = 0,number=0;
+	while (temp != NULL){
+		temp = temp->next;
+		number_of_nodes++;
+	}
+	temp = head;
+	while (temp != NULL){
+		number =number+(((temp->digit1 * 10) + (temp->digit2))*(power(10,number_of_nodes-1)));
+		number_of_nodes--;
+		temp = temp->next;
+	}
+	return number;
 }
