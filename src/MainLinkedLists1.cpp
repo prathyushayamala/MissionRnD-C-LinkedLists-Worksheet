@@ -27,7 +27,8 @@ Objectives of C-LinkedLists-1 Lesson:
 #include "FunctionHeadersLinkedLists1.h"
 
 int main(){
-
+	int num = -4568;
+	struct node *head = numberToLinkedList(num);
 	//Test 012SortSll
 
 	//Test numberToLinkedList
